@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Reacts</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+		<link rel="stylesheet" href="css/presentation.css" type="text/css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section class="main-slide">
+					<img  class="image" src="./images/React-logo.png" alt="Image" width="768" height="432">
+					<h3>Speaker: Ekaterina Rudenko</h3>
+				</section>
+				<section>
+					<section class="slide">
+						<h2 class="slide-title">What is React?</h2>
+						<img  class="image" src="./images/react.jpg" alt="Image" width="615" height="345">					
+					</section>
+					<section class="slide">
+						<p>JavaScript library for building <span class="span">user interfaces (UIs)</span></p>
+						<img  class="image" src="./images/UI.svg" alt="Image" width="615" height="345">
+						<p class="fragment fade-in">Was created Facebook engineer <span class="span">Jordan Walke </span>in 2011</p>	
+			       </section>
+				</section>
+				<section>
+					<section class="slide">
+						<h2 class="slide-title">React component</h2>
+						<p>Correspond to various <span class="span">interface elements</span></p>
+						<img  class="image" src="./images/react-component.png" alt="Image">					
+					</section>
+					<section class="slide">
+						<h3 class="slide-heading">Ways of declaring components</h3>
+						<ul>	
+							<li class="fragment fade-in">Functional components</li>	
+							<li class="fragment fade-in">Class-based components </li>	
+						  </ul>
+					</section>
+					<section class="slide">
+						<h3 class="slide-heading">Functional components</h3>
+						<pre><code>
+<div id="root"></div>
+<script type="text/babel">
+
+    function Welcome() {
+       return <h1>Hello, React!</h1>;
+    }
+    ReactDOM.render(<Welcome />, document.getElementById('root'));
+
+</script>
+</code></pre>	
+						<p class="fragment fade-in result">↓<br>Hello, React!</p>						
+					</section>
+					<section class="slide">
+						<h3 class="slide-heading">Class-based components</h3>
+						<pre><code>
+<div id="root"></div>
+<script type="text/babel">
+
+    class Welcome extends React.Component {
+	 render() {
+            return (<h1>Hello, React!</h1>);
+	 }
+    }
+    ReactDOM.render(<Welcome />, document.getElementById('root'));
+
+</script>
+</code></pre>	
+                        <p class="fragment fade-in result">↓<br>Hello, React!</p>						
+					</section>	   
+				</section>
+				<section>
+					<section class="slide">
+						<h2 class="slide-title">What is JSX used for in React?</h2>
+						<img class="image" src="./images/jsx.jpg" alt="Image" width="768" height="432">					
+					</section>
+					<section class="slide">
+						<p>JSX stands for <span class="span">JavaScript XML</span></p>
+						<p class="fragment fade-in">Allows to write HTML elements in React</span></p>
+						<div class="fragment fade-in">
+							<p>With JSX</p>
+						<pre><code>const element = <h1>Hello, React!</h1>;
+ReactDOM.render(element, document.getElementById('root'));</code></pre>
+							<p>Without JSX</p>
+						<pre><code>const element = React.createElement('h1', {}, 'Hello, React!');
+ReactDOM.render(element, document.getElementById('root'));</code></pre>
+						</div>	
+					</section>
+					<section class="slide">
+						<h3 class="slide-heading">Expressions in JSX</h3>
+						<pre><code>const element = <h1>React is {5 + 5} times better with JSX</h1></code></pre>
+						    <p class="fragment fade-in result">↓<br>React is 10 times better with JSX</p>	
+					</section>
+				</section>
+				<section>
+					<section class="slide">
+						<h2 class="slide-title">React props</h2>
+						<p class="fragment fade-in">Props are <span class="span">arguments </span>passed into React components</p>
+						<pre class="fragment fade-in"><code>
+class Welcome extends React.Component {
+  render() {
+    return (<h1>Hello, {this.props.name}!</h1>);
+  }
+}
+ReactDOM.render(< Welcome name="React"/>,
+                  document.getElementById('root'));
+						</code></pre>
+						<p class="fragment fade-in result">↓<br>Hello, React!</p>							
+					</section>					
+					<section class="slide">
+						<p>Pass data from one component to another as parameters</p>
+						<pre class="fragment fade-in"><code>class Car extends React.Component {
+  render() {
+    return <h2>I am a {this.props.brand}!</h2>;
+  }
+}	
+class Garage extends React.Component {
+  render() {
+    return (
+	<div><h1>Who lives in my garage?</h1>
+        < Car brand="Ford" />
+	</div>);
+  }
+}
+ReactDOM.render(< Garage />, document.getElementById('root'));</code></pre>
+						<p class="fragment fade-in result">→ Who lives in my Garage? <br>I am a Ford!</p>
+						<p class="fragment fade-in">Props should <span class="span">not be modified </span>inside the component</p>																
+					</section>
+				</section>
+				<section>
+					<section class="slide">
+					   <h2 class="slide-title">React state</h2>
+					   <p class="fragment fade-in">A built-in <span class="span">state object</span>, where store property values</p>	
+					   <pre class="fragment fade-in"><code>class Car extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {brand: "Ford", color: "red"};
+  }
+  changeColor = () => { this.setState({color: "blue"}); }
+  render() {
+    return (
+	<p>It is a {this.state.color} {this.state.brand}.</p>
+	<button onClick={this.changeColor}>Change color</button>
+    );
+  }
+}</code></pre>	
+				   <p class="fragment fade-in result">→ It is a red Ford.</p>
+				   <p class="fragment fade-in">State object <span class="span">can be changed </span></p>
+				   </section>
+				</section>
+				<section>
+					<section class="slide">
+				      	<h2 class="slide-title">Virtual DOM</h2>
+				    	<img class="image" src="./images/virtual-dom.png" alt="Image">					
+					</section>
+				</section>		
+				<section class="slide">
+					<h2 class="slide-title">Thanks for watching!</h2>					
+				</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>

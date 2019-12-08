@@ -1,0 +1,48 @@
+.main-slide h3 {
+    font-size: 0.7em;
+    color: rgb(102, 101, 102);
+    text-transform: none;
+}
+
+.main-slide .slide-title {
+    font-size: 0.95em;
+    color: rgb(30, 3, 153);
+    text-transform: none;
+}
+
+.slide .slide-title {
+    color: rgb(30, 3, 153);
+    text-transform: none;
+}
+
+.slide .image {
+    border: none;
+    box-shadow: none;
+}
+
+.slide p, .slide li  {
+    color: rgb(80, 81, 88);
+    font-size: 0.9em;
+}
+
+.slide .result  {
+    color: rgb(38, 172, 5);
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.slide p .span, .slide h3 .span  {
+    color: red;
+    font-size: 1.1em;
+}
+
+.slide .slide-heading {
+    color: rgb(30, 3, 153);
+    text-transform: none;
+    font-size: 1.1em;
+}
+
+.slide .underline {
+    text-decoration: underline;
+}
+
